@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Calculadora Básica - Ejercicio 3</title>
+        <link rel="stylesheet" type="text/css" href="CalculadoraBasica.css" />
+    </head>
+    <body>
+        <script src="CalculadoraBasica.js"></script>
+        <h1>Calculadora Básica</h1>
+        <form>
+            <label for="pantalla">Pantalla</label>
+            <input type="text" id="pantalla" disabled>
+            <input type="button" value="mrc" onClick="cal.mrc()">
+            <input type="button" value="m-" onClick="cal.mMenos()">
+            <input type="button" value="m+" onClick="cal.mMas()">
+            <input type="button" value="/" onClick="cal.division()">
+            <input type="button" value="7" onClick="cal.digitos(7)">
+            <input type="button" value="8" onClick="cal.digitos(8)">
+            <input type="button" value="9" onClick="cal.digitos(9)">
+            <input type="button" value="*" onClick="cal.multiplicacion()">
+            <input type="button" value="4" onClick="cal.digitos(4)">
+            <input type="button" value="5" onClick="cal.digitos(5)">
+            <input type="button" value="6" onClick="cal.digitos(6)">
+            <input type="button" value="-" onClick="cal.resta()">
+            <input type="button" value="1" onClick="cal.digitos(1)">
+            <input type="button" value="2" onClick="cal.digitos(2)">
+            <input type="button" value="3" onClick="cal.digitos(3)">
+            <input type="button" value="+" onClick="cal.suma()">
+            <input type="button" value="0" onClick="cal.digitos(0)">
+            <input type="button" value="." onClick="cal.punto()">
+            <input type="button" value="C" onClick="cal.borrar()">
+            <input type="button" value="=" onClick="cal.igual()">
+            <input type="submit" value="enviar">
+        </form>
+        <footer>
+            <a href="https://validator.w3.org/nu/#file"> <img src="multimedia/HTML5.png" alt=" HTML5 Válido!" /></a>
+            <a href="https://jigsaw.w3.org/css-validator/#validate_by_upload"> <img src="multimedia/CSS3.png" alt="CSS3 Válido!" /></a>
+        </footer>
+    </body>
+</html>
