@@ -59,12 +59,53 @@ class Calculadora {
         }
         this.update();
     }
+    sqrt() {
+        try {
+            this.ultimoResultado = this.pantalla;
+            this.pantalla = Math.sqrt(eval(this.pantalla));
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
+    ce() {
+        this.borrar();
+    }
+    c() {
+        this.borrar();
+        this.memory = 0;
+        this.ultimoResultado = 0;
+    }
+    cambiarSigno() {
+        try {
+            this.ultimoResultado = this.pantalla;
+            var result = eval(this.pantalla);
+            this.pantalla = result * - 1;
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
+    porcentaje() {
+        try {
+            if (/^([0-9]+'*'[0-9]+)$/.test(this.pantalla)) {
+                this.ultimoResultado = this.pantalla;
+                var result = eval(this.pantalla);
+                this.pantalla = result / 100;
+            }
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
     update() {
         document.querySelector("input[type=text]").value = this.pantalla;
     }
     
 }
-
 class CalculadoraCientifica extends Calculadora {
     constructor() {
         super();
@@ -264,17 +305,6 @@ class CalculadoraCientifica extends Calculadora {
         this.update();
     }
 
-    sqrt() {
-        try {
-            this.ultimoResultado = this.pantalla;
-            this.pantalla = Math.sqrt(eval(this.pantalla));
-        }
-        catch (err) {
-            this.pantalla = "Error = " + err;
-        }
-        this.update();
-    }
-
     pow10() {
         try {
             this.ultimoResultado = this.pantalla;
@@ -324,15 +354,6 @@ class CalculadoraCientifica extends Calculadora {
         this.update();
     }
 
-    ce() {
-        this.borrar();
-    }
-
-    c() {
-        this.borrar();
-        this.ultimoResultado = 0;
-    }
-
     del() {
         this.pantalla = this.pantalla.slice(0,-1);
         this.update();
@@ -358,18 +379,6 @@ class CalculadoraCientifica extends Calculadora {
         this.update();
     }
 
-    cambiarSigno() {
-        try {
-            this.ultimoResultado = this.pantalla;
-            var result = eval(this.pantalla);
-            this.pantalla = result * - 1;
-        }
-        catch (err) {
-            this.pantalla = "Error = " + err;
-        }
-        this.update();
-    }
-
     parentesisI() {
         this.pantalla += "(";
         this.update();
@@ -385,7 +394,6 @@ class CalculadoraCientifica extends Calculadora {
 var cal = new CalculadoraCientifica();
 document.addEventListener('keydown', (event) => {
     const keyName = event.key;
-    console.log(keyName);
     switch(keyName) {
         case "0":
         case "1":
@@ -398,7 +406,6 @@ document.addEventListener('keydown', (event) => {
         case "8":
         case "9":
             cal.digitos(keyName);
-            console.log("hola");
             break;
         case "+":
             cal.suma();

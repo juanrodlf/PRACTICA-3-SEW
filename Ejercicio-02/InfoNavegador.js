@@ -1,6 +1,6 @@
 // InfoNavegador.js
 // Informacion del navegador
-// Version 1.0 08/11/2021 
+// Version 1.0 16/11/2021 
 
 // Propiedades obsoletas appName, appVersion, platform 
 // ver https://developer.mozilla.org/en-US/docs/Web/API/Navigator

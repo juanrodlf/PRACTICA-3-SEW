@@ -59,6 +59,48 @@ class Calculadora {
         }
         this.update();
     }
+    sqrt() {
+        try {
+            this.ultimoResultado = this.pantalla;
+            this.pantalla = Math.sqrt(eval(this.pantalla));
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
+    ce() {
+        this.borrar();
+    }
+    c() {
+        this.borrar();
+        this.memory = 0;
+        this.ultimoResultado = 0;
+    }
+    cambiarSigno() {
+        try {
+            this.ultimoResultado = this.pantalla;
+            var result = eval(this.pantalla);
+            this.pantalla = result * - 1;
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
+    porcentaje() {
+        try {
+            if (/^([0-9]+'*'[0-9]+)$/.test(this.pantalla)) {
+                this.ultimoResultado = this.pantalla;
+                var result = eval(this.pantalla);
+                this.pantalla = result / 100;
+            }
+        }
+        catch (err) {
+            this.pantalla = "Error = " + err;
+        }
+        this.update();
+    }
     update() {
         document.querySelector("input[type=text]").value = this.pantalla;
     }
@@ -68,7 +110,6 @@ class Calculadora {
 var cal = new Calculadora();
 document.addEventListener('keydown', (event) => {
     const keyName = event.key;
-    console.log(keyName);
     switch(keyName) {
         case "0":
         case "1":
@@ -81,7 +122,6 @@ document.addEventListener('keydown', (event) => {
         case "8":
         case "9":
             cal.digitos(keyName);
-            console.log("hola");
             break;
         case "+":
             cal.suma();
@@ -98,8 +138,11 @@ document.addEventListener('keydown', (event) => {
         case ".":
             cal.punto();
             break;
-        case "Delete", "Backspace":
-            cal.borrar();
+        case "Delete":
+            cal.ce();
+            break;
+        case "Backspace":
+            cal.c();
             break;
         case "Enter":
             cal.igual();
@@ -112,6 +155,15 @@ document.addEventListener('keydown', (event) => {
             break;
         case "m":
             cal.mMas();
+            break;
+        case "z":
+            cal.sqrt();
+            break;
+        case "p":
+            cal.porcentaje();
+            break;
+        case "Control":
+            cal.cambiarSigno();
             break;
     }
 })

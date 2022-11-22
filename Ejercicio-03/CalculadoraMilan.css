@@ -6,7 +6,7 @@ html {
 /*Especificidad 001*/
 form {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 20px;
     background-color: coral;
@@ -24,7 +24,7 @@ form {
 
 /*Especificidad 011*/
 input[type="text"] {
-    grid-column: 1/5;
+    grid-column: 1/6;
     background-color: aliceblue;
     color: black;
     font-size: x-large;
@@ -42,10 +42,17 @@ input[type="button"]{
 /*Especificidad 021*/
 input[type="button"][value="/"],
 input[type="button"][value="*"],
-input[type="button"][value="-"],
+input[type="button"][value="-"] {
+    background-color: darkred;
+    color: white;
+}
+
+/*Especificidad 021*/
 input[type="button"][value="+"] {
     background-color: darkred;
     color: white;
+    grid-row: 5/7;
+    grid-column: 4;
 }
 
 /*Especificidad 021*/
